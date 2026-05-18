@@ -1,0 +1,90 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #312e81 100%);
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8em;
+  background: linear-gradient(135deg, #93c5fd, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+header p { color: #94a3b8; margin: 4px 0 25px 0; }
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px 25px;
+  margin-bottom: 18px;
+}
+
+.card h2 { margin: 0 0 12px 0; font-size: 1.05em; color: #f1f5f9; }
+
+.status { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.8em; font-weight: 600; }
+.status.ok { background: #166534; color: #bbf7d0; }
+.status.ko { background: #7f1d1d; color: #fecaca; }
+.status.wait { background: #78350f; color: #fde68a; }
+
+pre {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 7px;
+  padding: 12px;
+  overflow-x: auto;
+  font-size: 0.85em;
+  color: #cbd5e1;
+}
+
+form { display: flex; gap: 8px; margin-top: 10px; }
+input[type=text] {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  padding: 9px 12px;
+  color: #e2e8f0;
+  font-size: 0.95em;
+}
+input[type=text]:focus { outline: none; border-color: #6366f1; }
+
+button {
+  background: #4338ca;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:hover { background: #4f46e5; }
+button:disabled { background: #334155; cursor: not-allowed; }
+
+ul.messages { list-style: none; padding: 0; margin: 12px 0 0 0; }
+ul.messages li {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 7px;
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ul.messages .date { color: #64748b; font-size: 0.78em; }
+
+footer { color: #64748b; font-size: 0.8em; text-align: center; margin-top: 30px; }
