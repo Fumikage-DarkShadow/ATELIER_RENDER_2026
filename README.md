@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------------------
-🎯 ATELIER RENDER
+🎯 ATELIER RENDER - Fumikage-DarkShadow
 ------------------------------------------------------------------------------------------------------
 L’idée en 30 secondes : Dans cet atelier, vous allez construire une **chaîne DevOps complète de bout en bout**. À partir d’une **application Flask**, vous allez **créer une image Docker**, la publier dans un registre, puis **automatiser son déploiement dans le cloud** avec **GitHub Actions** et utiliser **Terraform pour créer un service Render**. L’objectif est de comprendre comment passer du code à une application accessible en ligne, de manière industrielle, reproductible et sans intervention manuelle. À la fin, chacun de vous aura sa propre application déployée en production.
   
