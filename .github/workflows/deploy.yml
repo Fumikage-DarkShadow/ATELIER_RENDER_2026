@@ -102,5 +102,6 @@ jobs:
             -var="render_owner_id=${{ secrets.RENDER_OWNER_ID }}" \
             -var="image_url=${IMAGE_URL}" \
             -var="image_tag=${IMAGE_TAG}" \
-            -var="github_actor=${ACTOR}"
+            -var="github_actor=${ACTOR}" \
+            -var="database_url=${{ secrets.DATABASE_URL }}"
         working-directory: terraform
