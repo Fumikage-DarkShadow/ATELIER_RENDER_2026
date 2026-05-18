@@ -109,14 +109,49 @@ def add_message():
         if conn is None:
             return jsonify({"error": "DATABASE_URL non defini"}), 500
         cur = conn.cursor()
-        cur.execute("INSERT INTO messages (contenu) VALUES (%s) RETURNING id;", (contenu,))
-        new_id = cur.fetchone()[0]
+        cur.execute("INSERT INTO messages (contenu) VALUES (%s) RETURNING id, cree_le;", (contenu,))
+        new_id, cree_le = cur.fetchone()
         conn.commit()
         cur.close()
         conn.close()
-        return jsonify({"id": new_id, "contenu": contenu}), 201
+        return jsonify({"id": new_id, "contenu": contenu, "cree_le": cree_le.isoformat()}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/messages/<int:message_id>", methods=["DELETE"])
+def delete_message(message_id):
+    try:
+        conn = get_db_connection()
+        if conn is None:
+            return jsonify({"error": "DATABASE_URL non defini"}), 500
+        cur = conn.cursor()
+        cur.execute("DELETE FROM messages WHERE id = %s;", (message_id,))
+        affected = cur.rowcount
+        conn.commit()
+        cur.close()
+        conn.close()
+        if affected == 0:
+            return jsonify({"error": "message introuvable"}), 404
+        return jsonify({"ok": True, "id": message_id})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/stats")
+def stats():
+    try:
+        conn = get_db_connection()
+        if conn is None:
+            return jsonify({"total": 0, "db": False})
+        cur = conn.cursor()
+        cur.execute("SELECT COUNT(*) FROM messages;")
+        total = cur.fetchone()[0]
+        cur.close()
+        conn.close()
+        return jsonify({"total": total, "db": True})
+    except Exception:
+        return jsonify({"total": 0, "db": False})
 
 
 if __name__ == "__main__":
